@@ -19,7 +19,7 @@ public class BenchmarkResult {
 		StringBuilder sb = new StringBuilder();
 		sb.append(String.format("%s: iterations: %d, repetitions: %d\n", title, -1, -1));
 		for(Map.Entry<String, DescriptiveStatistics> entry : stats.entrySet()) {
-			sb.append(String.format("%s [min: %f, max: %f, mean: %f, stddev: %f]\n", 
+			sb.append(String.format("%s\t[min: %5.3f, max: %5.3f, mean: %5.3f, stddev: %5.3f]\n", 
 					entry.getKey(),
 					entry.getValue().getMin(),
 					entry.getValue().getMax(),
