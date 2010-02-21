@@ -55,7 +55,7 @@ public class Benchmark {
 
 	private void benchmarkComponent(BenchmarkComponent item, int repetitions) {
 		final Benchmarkable benchmarkable = item.benchmarkable();
-		benchmarkable.setup();
+		setup(benchmarkable);
 		long start = currentTimeMillis();
 		for(int i = 0 ; ++i < repetitions ; ) {
 			benchmarkable.benchmark();
@@ -63,6 +63,14 @@ public class Benchmark {
 		long finish = currentTimeMillis();
 		item.recordBenchmarkDuration(finish - start);
 		benchmarkable.teardown();
+	}
+
+	private void setup(Benchmarkable benchmarkable) {
+		try {
+			benchmarkable.setup();
+		} catch (Exception e) {
+			throw new Error(e);
+		}
 	}
 
 	protected final BenchmarkParameters parameters() {

@@ -2,7 +2,7 @@ package net.cheney.benchmark;
 
 public abstract class Benchmarkable {
 
-	public void setup() {
+	public void setup() throws Exception {
 		
 	}
 	

@@ -1,8 +1,9 @@
 package net.cheney.benchmark.example;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+
+import org.apache.commons.math.util.ContinuedFraction;
 
 import net.cheney.benchmark.Benchmark;
 import net.cheney.benchmark.BenchmarkResult;
@@ -11,50 +12,60 @@ import net.cheney.benchmark.Benchmarkable;
 public class BenchmarkInterfaces {
 	
 	public static class ArrayListBenchmarkable extends Benchmarkable {
+		
+		public static ArrayList<Object> a;
 
 		public void benchmark() {
 			final Object o = new Object();
 			final int size = 10000;
-			ArrayList l = new ArrayList(size);
+			ArrayList<Object> l = new ArrayList<Object>(size);
 			for(int i = 0; ++i < size ; ) {
 				l.add(o);
 			}
-			assert l.size() == size;
-			LinkedList k = new LinkedList();
-			for(int i = 0; ++i < size ; ) {
-				k.add(o);
-			}
-			assert k.size() == size;
+			
+			a = l;
 		}
 		
 	}
 	
 	public static class ListBenchmarkable extends Benchmarkable {
 
+		public static List<Object> a;
+		
 		public void benchmark() {
 			final Object o = new Object();
 			final int size = 10000;
-			List l = new ArrayList(size);
+			List<Object> l = new ArrayList<Object>(size);
 			for(int i = 0; ++i < size ; ) {
 				l.add(o);
 			}
-			assert l.size() == size;
-			l = new LinkedList();
-			for(int i = 0; ++i < size ; ) {
-				l.add(o);
+			
+			a = l;
+			
+
+			
+			$labelB: {
+				int foo = 2;
+				$labelA: {
+					foo = 1;
+					break $labelB;
+				}
 			}
-			assert l.size() == size;
 		}
 		
 	}
 
 	public static void main(String[] args) {
+		ArrayListBenchmarkable arrayListBenchmarkable = new ArrayListBenchmarkable();
+		ListBenchmarkable listBenchmarkable = new ListBenchmarkable();
+		
 		BenchmarkResult result = Benchmark.newBenchmark("List comparison")
-			.of("ArrayList", new ArrayListBenchmarkable())
-			.and("List", new ListBenchmarkable())
+			.of("ArrayList", arrayListBenchmarkable)
+			.and("List", listBenchmarkable)
 			.setRepetitions(2000)
 			.run();
 		System.out.println(result.toString());
+		System.out.println(String.format("%s, %s",arrayListBenchmarkable.a, listBenchmarkable.a));
 	}
 	
 }
