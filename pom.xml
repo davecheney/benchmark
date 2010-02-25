@@ -11,7 +11,7 @@
 	<artifactId>benchmark</artifactId>
 	<packaging>pom</packaging>
 	<name>benchmark</name>
-	<version>0.1</version>
+	<version>0.2-SNAPSHOT</version>
 	<description>A micro benchmarking framework</description>
 	<modules>
 		<module>benchmark-core</module>
