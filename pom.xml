@@ -18,6 +18,12 @@
 		<module>benchmark-example</module>
 	</modules>
 
+	<scm>
+		<connection>scm:git:git://github.com/davecheney/benchmark.git</connection>
+		<developerConnection>scm:git:git@github.com:davecheney/benchmark.git</developerConnection>
+		<url>http://github.com/davecheney/benchmark</url>
+	</scm>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
