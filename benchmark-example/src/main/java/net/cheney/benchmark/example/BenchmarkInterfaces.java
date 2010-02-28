@@ -3,8 +3,6 @@ package net.cheney.benchmark.example;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.math.util.ContinuedFraction;
-
 import net.cheney.benchmark.Benchmark;
 import net.cheney.benchmark.BenchmarkResult;
 import net.cheney.benchmark.Benchmarkable;
@@ -41,16 +39,6 @@ public class BenchmarkInterfaces {
 			}
 			
 			a = l;
-			
-
-			
-			$labelB: {
-				int foo = 2;
-				$labelA: {
-					foo = 1;
-					break $labelB;
-				}
-			}
 		}
 		
 	}

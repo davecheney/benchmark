@@ -11,13 +11,13 @@ import org.apache.commons.math.stat.descriptive.DescriptiveStatistics;
 
 public class Benchmark {
 
-	private final List<BenchmarkComponent> benchmarks;
+	private final BenchmarkComponent[] benchmarks;
 	private final BenchmarkParameters parameters;
 	private final String title;
 
 	protected Benchmark(String title, List<BenchmarkComponent> benchmarks, BenchmarkParameters parameters) {
 		this.title = title;
-		this.benchmarks = benchmarks;
+		this.benchmarks = (BenchmarkComponent[]) benchmarks.toArray();
 		this.parameters = parameters;
 	}
 
@@ -31,7 +31,7 @@ public class Benchmark {
 	}
 	
 	private BenchmarkResult benchmark() {
-		final int benchmarkIterations = parameters().benchmarkIterations();
+		final int benchmarkIterations = parameters.benchmarkIterations();
 		for(int i = 0 ; ++i < benchmarkIterations ; ) {
 			benchmarkInnerLoop();
 		}
@@ -40,15 +40,15 @@ public class Benchmark {
 
 	private Map<String, DescriptiveStatistics> benchmarkComponentsToMap() {
 		Map<String, DescriptiveStatistics> m = new HashMap<String, DescriptiveStatistics>();
-		for(BenchmarkComponent item : benchmarks()) {
+		for(BenchmarkComponent item : benchmarks) {
 			m.put(item.title, item.statistics);
 		}
 		return m;
 	}
 
 	protected void benchmarkInnerLoop() {
-		final int repetitions = parameters().repetitions();
-		for(BenchmarkComponent item : benchmarks()) {
+		final int repetitions = parameters.repetitions();
+		for(BenchmarkComponent item : benchmarks) {
 			benchmarkComponent(item, repetitions);
 		}
 	}
@@ -71,14 +71,6 @@ public class Benchmark {
 		} catch (Exception e) {
 			throw new Error(e);
 		}
-	}
-
-	protected final BenchmarkParameters parameters() {
-		return parameters;
-	}
-	
-	protected final Iterable<BenchmarkComponent> benchmarks() {
-		return benchmarks;
 	}
 
 	private void warmup() {
