@@ -9,6 +9,7 @@
 	<groupId>net.cheney.benchmark</groupId>
 	<artifactId>benchmark-core</artifactId>
 	<name>benchmark-core</name>
+	<version>0.2-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
