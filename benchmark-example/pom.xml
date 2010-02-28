@@ -10,11 +10,12 @@
 	<artifactId>benchmark-example</artifactId>
 	<name>benchmark-example</name>
 	<version>0.2-SNAPSHOT</version>
+	
 	<dependencies>
 		<dependency>
 			<groupId>net.cheney.benchmark</groupId>
 			<artifactId>benchmark-core</artifactId>
-			<version>${project.version}</version>
+			<version>0.2-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
