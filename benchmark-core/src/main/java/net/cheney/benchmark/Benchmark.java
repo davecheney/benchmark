@@ -17,7 +17,7 @@ public class Benchmark {
 
 	protected Benchmark(String title, List<BenchmarkComponent> benchmarks, BenchmarkParameters parameters) {
 		this.title = title;
-		this.benchmarks = (BenchmarkComponent[]) benchmarks.toArray();
+		this.benchmarks = benchmarks.toArray(new BenchmarkComponent[] {} );
 		this.parameters = parameters;
 	}
 
