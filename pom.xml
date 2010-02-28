@@ -12,6 +12,13 @@
 	<version>0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>benchmark</name>
+
+	<scm>
+		<connection>scm:git:git://github.com/davecheney/benchmark.git</connection>
+		<developerConnection>scm:git:git@github.com:davecheney/benchmark.git</developerConnection>
+		<url>http://github.com/davecheney/benchmark</url>
+	</scm>
+
 	<modules>
 		<module>benchmark-core</module>
 		<module>benchmark-example</module>
