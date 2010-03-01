@@ -8,7 +8,7 @@
 
 	<groupId>net.cheney.benchmark</groupId>
 	<artifactId>benchmark</artifactId>
-	<version>0.3-SNAPSHOT</version>
+	<version>0.2.1</version>
 	<packaging>pom</packaging>
 	<name>benchmark</name>
 
