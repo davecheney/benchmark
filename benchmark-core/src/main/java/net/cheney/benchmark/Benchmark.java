@@ -48,21 +48,25 @@ public final class Benchmark {
 
 	protected void benchmarkInnerLoop() {
 		final int repetitions = parameters.repetitions();
-		for(BenchmarkComponent item : benchmarks) {
-			benchmarkComponent(item, repetitions);
+		for(BenchmarkComponent component : benchmarks) {
+			long duration = benchmarkComponent(component, repetitions);
+			component.recordBenchmarkDuration(duration);
 		}
 	}
 
-	private void benchmarkComponent(BenchmarkComponent component, int repetitions) {
+	private long benchmarkComponent(BenchmarkComponent component, int repetitions) {
 		final Benchmarkable benchmarkable = component.benchmarkable();
 		setup(benchmarkable);
 		long start = currentTimeMillis();
-		for(int i = 0 ; ++i < repetitions ; ) {
-			benchmarkable.benchmark();
-		}
-		long finish = currentTimeMillis();
-		component.recordBenchmarkDuration(finish - start);
+		benchmark(benchmarkable, repetitions);
+		long duration = currentTimeMillis() - start;
 		benchmarkable.teardown();
+		return duration;
+	}
+
+	private void benchmark(Benchmarkable benchmarkable, int repetitions) {
+		for(int i = 0 ; i < repetitions ; ++i) 
+			benchmarkable.benchmark();
 	}
 
 	private void setup(Benchmarkable benchmarkable) {

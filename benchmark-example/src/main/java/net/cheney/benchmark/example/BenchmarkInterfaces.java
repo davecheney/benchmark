@@ -11,14 +11,12 @@ public class BenchmarkInterfaces {
 	
 	public static class ArrayListBenchmarkable extends Benchmarkable {
 		
-		int i = 0;
 		final Object o = new Object();
 		final int size = 10000;
 		private ArrayList<Object> list;
 		
 		@Override
 		public void setup() throws Exception {
-			System.out.println("ARRAYLIST Setup iteration : "+(++i));
 			list = new ArrayList<Object>(size);
 		}
 		
@@ -38,14 +36,12 @@ public class BenchmarkInterfaces {
 	
 	public static class ListBenchmarkable extends Benchmarkable {
 
-		int i = 0;
 		final Object o = new Object();
 		final int size = 10000;
 		private List<Object> list;
 		
 		@Override
 		public void setup() throws Exception {
-			System.out.println("LIST Setup iteration : "+(++i));
 			list = new ArrayList<Object>(size);
 		}
 		

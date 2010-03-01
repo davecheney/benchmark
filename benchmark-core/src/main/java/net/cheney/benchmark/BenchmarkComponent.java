@@ -20,5 +20,10 @@ final class BenchmarkComponent {
 	public void recordBenchmarkDuration(long duration) {
 		statistics.addValue(duration);
 	}
+	
+	@Override
+	public String toString() {
+		return title;
+	}
 
 }
