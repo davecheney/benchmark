@@ -3,18 +3,18 @@
 	<parent>
 		<artifactId>benchmark</artifactId>
 		<groupId>net.cheney.benchmark</groupId>
-		<version>0.2.1</version>
+		<version>0.3-SNAPSHOT</version>
 	</parent>
 	<groupId>net.cheney.benchmark</groupId>
 	<artifactId>benchmark-example</artifactId>
 	<name>benchmark-example</name>
-	<version>0.2.1</version>
+	<version>0.3-SNAPSHOT</version>
 	
 	<dependencies>
 		<dependency>
 			<groupId>net.cheney.benchmark</groupId>
 			<artifactId>benchmark-core</artifactId>
-			<version>0.2.1</version>
+			<version>0.3-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
