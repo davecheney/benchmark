@@ -3,7 +3,7 @@ package net.cheney.benchmark;
 import static java.lang.System.currentTimeMillis;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +39,7 @@ public class Benchmark {
 	}
 
 	private Map<String, DescriptiveStatistics> benchmarkComponentsToMap() {
-		Map<String, DescriptiveStatistics> m = new HashMap<String, DescriptiveStatistics>();
+		Map<String, DescriptiveStatistics> m = new LinkedHashMap<String, DescriptiveStatistics>();
 		for(BenchmarkComponent item : benchmarks) {
 			m.put(item.title, item.statistics);
 		}
