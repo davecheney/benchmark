@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.apache.commons.math.stat.descriptive.DescriptiveStatistics;
 
-public class Benchmark {
+public final class Benchmark {
 
 	private final BenchmarkComponent[] benchmarks;
 	private final BenchmarkParameters parameters;
@@ -53,15 +53,15 @@ public class Benchmark {
 		}
 	}
 
-	private void benchmarkComponent(BenchmarkComponent item, int repetitions) {
-		final Benchmarkable benchmarkable = item.benchmarkable();
+	private void benchmarkComponent(BenchmarkComponent component, int repetitions) {
+		final Benchmarkable benchmarkable = component.benchmarkable();
 		setup(benchmarkable);
 		long start = currentTimeMillis();
 		for(int i = 0 ; ++i < repetitions ; ) {
 			benchmarkable.benchmark();
 		}
 		long finish = currentTimeMillis();
-		item.recordBenchmarkDuration(finish - start);
+		component.recordBenchmarkDuration(finish - start);
 		benchmarkable.teardown();
 	}
 

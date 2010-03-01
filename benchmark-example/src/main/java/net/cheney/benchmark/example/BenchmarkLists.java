@@ -10,27 +10,49 @@ import net.cheney.benchmark.Benchmarkable;
 public class BenchmarkLists {
 	
 	public static class ArrayListBenchmarkable extends Benchmarkable {
-
+		
+		final Object o = new Object();
+		private ArrayList<Object> list;
+		
+		@Override
+		public void setup() throws Exception {
+			list = new ArrayList<Object>(10);
+		}
+		
 		public void benchmark() {
-			final Object o = new Object();
-			ArrayList l = new ArrayList(10);
-			for(int i = 0; i < 10000 ; ++i) {
-				l.add(o);
+			list.clear();
+			for(int i = 0; ++i < 10000 ; ) {
+				list.add(o);
 			}
+		}
+		
+		public void teardown() {
+			list = null;
 		}
 		
 	}
 	
 	public static class LinkedListBenchmarkable extends Benchmarkable {
-
+		
+		final Object o = new Object();
+		private LinkedList<Object> list;
+		
+		@Override
+		public void setup() throws Exception {
+			list = new LinkedList<Object>();
+		}
+		
 		public void benchmark() {
-			final Object o = new Object();
-			LinkedList l = new LinkedList();
-			for(int i = 0; i < 10000 ; ++i) {
-				l.add(o);
+			list.clear();
+			for(int i = 0; ++i < 10000 ; ) {
+				list.add(o);
 			}
 		}
 		
+		public void teardown() {
+			list = null;
+		}
+
 	}
 
 	public static void main(String[] args) {

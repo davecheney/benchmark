@@ -11,34 +11,53 @@ public class BenchmarkInterfaces {
 	
 	public static class ArrayListBenchmarkable extends Benchmarkable {
 		
-		public static ArrayList<Object> a;
-
-		public void benchmark() {
-			final Object o = new Object();
-			final int size = 10000;
-			ArrayList<Object> l = new ArrayList<Object>(size);
-			for(int i = 0; ++i < size ; ) {
-				l.add(o);
-			}
-			
-			a = l;
+		int i = 0;
+		final Object o = new Object();
+		final int size = 10000;
+		private ArrayList<Object> list;
+		
+		@Override
+		public void setup() throws Exception {
+			System.out.println("ARRAYLIST Setup iteration : "+(++i));
+			list = new ArrayList<Object>(size);
 		}
+		
+		public void benchmark() {
+			list.clear();
+			for(int i = 0; ++i < size ; ) {
+				list.add(o);
+			}
+		}
+		
+		public void teardown() {
+			list = null;
+		}
+
 		
 	}
 	
 	public static class ListBenchmarkable extends Benchmarkable {
 
-		public static List<Object> a;
+		int i = 0;
+		final Object o = new Object();
+		final int size = 10000;
+		private List<Object> list;
+		
+		@Override
+		public void setup() throws Exception {
+			System.out.println("LIST Setup iteration : "+(++i));
+			list = new ArrayList<Object>(size);
+		}
 		
 		public void benchmark() {
-			final Object o = new Object();
-			final int size = 10000;
-			List<Object> l = new ArrayList<Object>(size);
+			list.clear();
 			for(int i = 0; ++i < size ; ) {
-				l.add(o);
+				list.add(o);
 			}
-			
-			a = l;
+		}
+		
+		public void teardown() {
+			list = null;
 		}
 		
 	}
@@ -53,7 +72,6 @@ public class BenchmarkInterfaces {
 			.setRepetitions(2000)
 			.run();
 		System.out.println(result.toString());
-		System.out.println(String.format("%s, %s",arrayListBenchmarkable.a, listBenchmarkable.a));
 	}
 	
 }
