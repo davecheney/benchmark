@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>net.cheney</groupId>
 		<artifactId>cheney-base-pom</artifactId>
-		<version>4</version>
+		<version>6-SNAPSHOT</version>
 	</parent>
 
 	<groupId>net.cheney.benchmark</groupId>
